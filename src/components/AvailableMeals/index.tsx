@@ -1,3 +1,4 @@
+import { Card } from "../Card";
 import classes from "./index.module.css";
 
 interface Meal {
@@ -14,11 +15,13 @@ interface AvailableMealsProps {
 export function AvailableMeals({ meals }: AvailableMealsProps) {
   return (
     <section className={classes.meals}>
-      <ul>
-        {meals.map((meal) => (
-          <li>{meal.name}</li>
-        ))}
-      </ul>
+      <Card>
+        <ul>
+          {meals.map((meal) => (
+            <li>{meal.name}</li>
+          ))}
+        </ul>
+      </Card>
     </section>
   );
 }
