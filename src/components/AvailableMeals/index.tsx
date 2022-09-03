@@ -3,7 +3,7 @@ import { MealItem } from "../MealItem";
 import type { MealItemProps } from "../MealItem";
 import classes from "./index.module.css";
 
-interface Meal extends MealItemProps {
+export interface Meal extends MealItemProps {
   id: string;
 }
 

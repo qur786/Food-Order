@@ -1,8 +1,9 @@
 import { Fragment } from "react";
 import { AvailableMeals } from "../AvailableMeals";
 import { MealsSummary } from "../MealsSummary";
+import type { Meal } from "../AvailableMeals";
 
-const DUMMY_MEALS = [
+const DUMMY_MEALS: Meal[] = [
   {
     id: "m1",
     name: "Sushi",
