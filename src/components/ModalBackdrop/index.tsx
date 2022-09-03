@@ -1,3 +1,5 @@
+import classes from "./index.module.css";
+
 export function ModalBackdrop() {
-  return <div />;
+  return <div className={classes.backdrop} />;
 }
