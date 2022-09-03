@@ -1,3 +1,4 @@
+import { MealItemForm } from "../MealItemForm";
 import classes from "./index.module.css";
 
 export interface MealItemProps {
@@ -14,7 +15,9 @@ export function MealItem({ name, description, price }: MealItemProps) {
         <div className={classes.description}>{description}</div>
         <div className={classes.price}>{`$${price}`}</div>
       </div>
-      <div></div>
+      <div>
+        <MealItemForm />
+      </div>
     </li>
   );
 }
