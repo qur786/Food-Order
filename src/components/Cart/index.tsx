@@ -2,20 +2,27 @@ import { HTMLProps } from "react";
 import { Modal } from "../Modal";
 import classes from "./index.module.css";
 
+export interface CartItem {
+  id: string;
+  name: string;
+  amount: number;
+  price: number;
+}
+
 interface CartProps {
   onCartHide: HTMLProps<HTMLDivElement | HTMLButtonElement>["onClick"];
 }
 
 export function Cart({ onCartHide }: CartProps) {
-  const cartItems = [
-    { id: "1", name: "Sushi", description: "Rice with fish", price: 100 },
-  ].map((meal) => {
-    return (
-      <ul className={classes["cart-items"]}>
-        <li>{meal.name}</li>
-      </ul>
-    );
-  });
+  const cartItems = [{ id: "1", name: "Sushi", amount: 2, price: 100 }].map(
+    (meal) => {
+      return (
+        <ul className={classes["cart-items"]}>
+          <li>{meal.name}</li>
+        </ul>
+      );
+    }
+  );
   return (
     <Modal onBackdropClick={onCartHide}>
       {cartItems}
