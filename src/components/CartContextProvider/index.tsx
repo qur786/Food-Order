@@ -1,19 +1,5 @@
-import { createContext, PropsWithChildren } from "react";
-import type { Meal } from "../AvailableMeals";
-
-interface CartContext {
-  items: Meal[];
-  totalAmount: number;
-  addItem: (item: Meal) => void;
-  removeItem: (id: Meal["id"]) => void;
-}
-
-const CartConext = createContext<CartContext>({
-  items: [],
-  totalAmount: 0,
-  addItem: () => {},
-  removeItem: () => {},
-});
+import { PropsWithChildren } from "react";
+import { CartContext } from "../Contexts";
 
 export function CartContextProvider({ children }: PropsWithChildren) {
   const addItemHandler: CartContext["addItem"] = () => {};
@@ -26,6 +12,6 @@ export function CartContextProvider({ children }: PropsWithChildren) {
     removeItem: removeItemHandler,
   };
   return (
-    <CartConext.Provider value={cartConext}>{children}</CartConext.Provider>
+    <CartContext.Provider value={cartConext}>{children}</CartContext.Provider>
   );
 }
