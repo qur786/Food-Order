@@ -1,5 +1,10 @@
+import type { HTMLProps } from "react";
 import classes from "./index.module.css";
 
-export function ModalBackdrop() {
-  return <div className={classes.backdrop} />;
+interface ModalBackdropProps {
+  onClick: HTMLProps<HTMLDivElement>["onClick"];
+}
+
+export function ModalBackdrop({ onClick }: ModalBackdropProps) {
+  return <div className={classes.backdrop} onClick={onClick} />;
 }
