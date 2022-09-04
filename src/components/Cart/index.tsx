@@ -18,15 +18,13 @@ interface CartProps {
 
 export function Cart({ onCartHide }: CartProps) {
   const cartCtx = useContext(CartContext);
-  const cartItems = [{ id: "1", name: "Sushi", amount: 2, price: 100 }].map(
-    (meal) => {
-      return (
-        <ul className={classes["cart-items"]}>
-          <li>{meal.name}</li>
-        </ul>
-      );
-    }
-  );
+  const cartItems = cartCtx.items.map((meal) => {
+    return (
+      <ul className={classes["cart-items"]}>
+        <li>{meal.name}</li>
+      </ul>
+    );
+  });
   return (
     <Modal onBackdropClick={onCartHide}>
       {cartItems}
@@ -38,7 +36,9 @@ export function Cart({ onCartHide }: CartProps) {
         <button className={classes["button--alt"]} onClick={onCartHide}>
           Close
         </button>
-        <button className={classes.button}>Order</button>
+        {cartCtx.items.length > 0 ? (
+          <button className={classes.button}>Order</button>
+        ) : undefined}
       </div>
     </Modal>
   );
