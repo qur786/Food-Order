@@ -31,7 +31,21 @@ const cartReducer: Reducer<CartState, DispatchCartAction> = (
 ) => {
   let updatedState = defaultCartState;
   if (action.type === "add-item") {
-    const updatedItems = prevState.items.concat(action.item);
+    let updatedItem = action.item;
+    let updatedItems = prevState.items;
+    const existingItemIndex = prevState.items.findIndex(
+      (item) => item.id === action.item.id
+    );
+    const existingItem = updatedItems[existingItemIndex];
+    if (existingItem !== undefined) {
+      updatedItem = {
+        ...existingItem,
+        amount: existingItem.amount + action.item.amount,
+      };
+      updatedItems[existingItemIndex] = updatedItem;
+    } else {
+      updatedItems = updatedItems.concat(updatedItem);
+    }
     updatedState = {
       ...updatedState,
       items: updatedItems,
