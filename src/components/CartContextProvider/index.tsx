@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import { CartContext } from "../Contexts";
 import type { PropsWithChildren, Reducer } from "react";
-import type { CartItem } from "../Cart";
+import type { CartItem } from "../CartItem";
 
 interface AddItemAction {
   type: "add-item";
