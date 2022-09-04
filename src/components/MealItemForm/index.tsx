@@ -3,7 +3,11 @@ import { Input } from "../Input";
 import type { HTMLProps } from "react";
 import classes from "./index.module.css";
 
-export function MealItemForm() {
+export interface MealItemFormProps {
+  onAddToCart: (amount: number) => void;
+}
+
+export function MealItemForm({ onAddToCart }: MealItemFormProps) {
   const InputRef = useRef<HTMLInputElement | null>(null);
   const [isAmountValid, setIsAmountValid] = useState(true);
 
@@ -15,6 +19,7 @@ export function MealItemForm() {
     } else {
       setIsAmountValid(true);
     }
+    onAddToCart(amount);
   };
 
   return (

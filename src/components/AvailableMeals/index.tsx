@@ -19,6 +19,7 @@ export function AvailableMeals({ meals }: AvailableMealsProps) {
           {meals.map(({ id, name, description, price }) => (
             <MealItem
               key={id}
+              id={id}
               name={name}
               description={description}
               price={price}
