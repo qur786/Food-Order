@@ -52,6 +52,30 @@ const cartReducer: Reducer<CartState, DispatchCartAction> = (
       totalAmount:
         prevState.totalAmount + action.item.price * action.item.amount,
     };
+  } else {
+    let updatedItems = prevState.items;
+    const existingItemIndex = prevState.items.findIndex(
+      (item) => item.id === action.id
+    );
+    const existingItem = updatedItems[existingItemIndex];
+    if (existingItem !== undefined) {
+      let updatedItem = existingItem;
+      const totalAmount = prevState.totalAmount - existingItem.price;
+      if (existingItem.amount === 1) {
+        updatedItems.splice(existingItemIndex, 1);
+      } else {
+        updatedItem = {
+          ...updatedItem,
+          amount: updatedItem.amount - 1,
+        };
+        updatedItems[existingItemIndex] = updatedItem;
+      }
+      updatedState = {
+        ...updatedState,
+        items: updatedItems,
+        totalAmount,
+      };
+    }
   }
   return updatedState;
 };
