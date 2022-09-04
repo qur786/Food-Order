@@ -4,15 +4,15 @@ import classes from "./index.module.css";
 
 interface CartItemsProps {
   items: CartItem[];
+  addCartItemHandler: CartItemProps["onAddItem"];
+  removeCartItemHandler: CartItemProps["onRemoveItem"];
 }
 
-export function CartItems({ items }: CartItemsProps) {
-  const addCartItemHandler: CartItemProps["onAddItem"] = (item) => {
-    console.log(item);
-  };
-  const removeCartItemHandler: CartItemProps["onRemoveItem"] = (id) => {
-    console.log(id);
-  };
+export function CartItems({
+  items,
+  addCartItemHandler,
+  removeCartItemHandler,
+}: CartItemsProps) {
   const liItems = items.map((item) => {
     return (
       <CartItem

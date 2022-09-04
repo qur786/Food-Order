@@ -14,7 +14,11 @@ export function Cart({ onCartHide }: CartProps) {
   const cartItems = cartCtx.items;
   return (
     <Modal onBackdropClick={onCartHide}>
-      <CartItems items={cartItems} />
+      <CartItems
+        items={cartItems}
+        addCartItemHandler={cartCtx.addItem}
+        removeCartItemHandler={cartCtx.removeItem}
+      />
       <div className={classes.total}>
         <span>Total Amount</span>
         <span>{cartCtx.totalAmount.toFixed(2)}</span>

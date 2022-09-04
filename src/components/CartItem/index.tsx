@@ -26,7 +26,7 @@ export function CartItem({ item, onAddItem, onRemoveItem }: CartItemProps) {
           <span className={classes.amount}>x {amount}</span>
         </div>
         <div className={classes.actions}>
-          <button onClick={() => onAddItem(item)}>+</button>
+          <button onClick={() => onAddItem({ ...item, amount: 1 })}>+</button>
           <button onClick={() => onRemoveItem(id)}>-</button>
         </div>
       </div>
